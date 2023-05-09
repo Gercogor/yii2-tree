@@ -16,6 +16,7 @@ class m230505_014655_create_tree_table extends Migration
             'id' => $this->primaryKey(),
             'name'=> $this->string(),
             'parent_id'=>$this->integer(),
+            'sort'=>$this->integer()->null(),
         ]);
     }
 
