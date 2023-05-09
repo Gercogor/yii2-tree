@@ -4,11 +4,14 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Tree;
 
 class SiteController extends Controller
 {
@@ -61,7 +64,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->actionTree();
     }
 
     /**
@@ -125,4 +128,27 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * Displays tree page.
+     *
+     * @return string
+     */
+    public function actionTree()
+    {
+        $dynoRoute = Yii::$app->request->pathInfo;
+
+        if (str_contains('site/tree', $dynoRoute)) {
+            $dynoRoute = '';
+        } else {
+            $dynoRoute = explode('/', $dynoRoute);
+        };
+
+        $data=Tree::find()->asArray()->all();
+
+        $root= (new \app\models\Tree)->buildTree($data);
+
+        return $this->render('tree', ['tree' => $root, 'dynoRoute'=>$dynoRoute]);
+    }
+
 }
