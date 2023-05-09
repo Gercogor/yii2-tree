@@ -22,6 +22,13 @@ if (!$dynoRoute) {
 <div class="site-tree">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <div style="margin: 10px 0">
+        <label for="settings">
+            Settings
+            <input id="settings" type="checkbox">
+        </label>
+    </div>
+
     <?php
         function print_list($array, $parent = 0, $url='')
         {
@@ -46,21 +53,44 @@ if (!$dynoRoute) {
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('loaded');
+
+        const checkbox = document.querySelector('#settings')
         let liArray = document.querySelectorAll('li');
-        liArray.forEach(el=>{
-            el.addEventListener('click', function (e){
-                e.preventDefault();
-                e.stopPropagation();
-                console.log(e.target);
-            })
+
+        checkbox.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                console.log('checked');
+                liArray.forEach(el=>{
+                    el.addEventListener('click', click)
+                })
+                liArray.forEach(el=>{
+                    el.addEventListener('contextmenu', rightClick)
+                })
+            } else {
+                liArray.forEach(el=>{
+                    el.removeEventListener("click",click);
+                    el.removeEventListener("contextmenu",rightClick);
+                })
+                console.log('not checked');
+            }
         })
-        liArray.forEach(el=>{
-            el.addEventListener('contextmenu', function (e){
-                e.preventDefault();
-                e.stopPropagation();
-                console.log(e.target);
-            })
-        })
+
     })
+    function click (e){
+        e.preventDefault();
+        e.stopPropagation();
+        let  oldDiv = document.querySelector('#tree-setting');
+        if (oldDiv) oldDiv.remove();
+        let div = document.createElement('div');
+        div.setAttribute("id", "tree-setting");
+        div.innerHTML('123')
+        e.target.after(div)
+        console.log(e.target.parentElement);
+    }
+    function rightClick (e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(e.target);
+    }
 </script>
 
