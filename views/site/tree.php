@@ -43,24 +43,4 @@ if (!$dynoRoute) {
 
     <code><?= __FILE__ ?></code>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('loaded');
-        let liArray = document.querySelectorAll('li');
-        liArray.forEach(el=>{
-            el.addEventListener('click', function (e){
-                e.preventDefault();
-                e.stopPropagation();
-                console.log(e.target);
-            })
-        })
-        liArray.forEach(el=>{
-            el.addEventListener('contextmenu', function (e){
-                e.preventDefault();
-                e.stopPropagation();
-                console.log(e.target);
-            })
-        })
-    })
-</script>
 

@@ -9,7 +9,7 @@ use yii\console\ExitCode;
 
 class SeedController extends Controller
 {
-    const COUNT_OF_RECORDS = 100;
+    const COUNT_OF_RECORDS = 5000;
 
     /**
      * @return int Exit code
@@ -29,9 +29,9 @@ class SeedController extends Controller
             return ExitCode::OK;
         }
 
-        for ($i = 0; $i < self::COUNT_OF_RECORDS; $i++) {
+        for ($i = 1; $i < self::COUNT_OF_RECORDS; $i++) {
             $tree->setIsNewRecord(true);
-            $tree->id = null;
+            $tree->id = $i;
             $tree->name = $faker->name();
             $digit = $faker->optional()->passthrough(mt_rand(0, $i));
             $tree->parent_id = $digit < $i ? $digit : 0;
