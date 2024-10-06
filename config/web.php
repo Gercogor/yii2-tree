@@ -47,7 +47,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/<url:.+>' => 'site/tree',
+//                '/<url:.+>' => 'site/tree',
             ],
         ],
 
