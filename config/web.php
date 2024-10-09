@@ -41,13 +41,17 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['ADMIN'],
+        ],
         'db' => $db,
 
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/<url:.+>' => 'site/tree',
+//                '/<url:.+>' => 'site/tree',
             ],
         ],
 

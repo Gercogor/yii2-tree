@@ -15,6 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Please fill out the following fields to login:</p>
 
+    <pre>
+        admin - admin To admin access,
+        demo - demo To demo access.
+    </pre>
+
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',

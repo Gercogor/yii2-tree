@@ -1,9 +1,9 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=laravel_voyager',
-    'username' => 'user',
-    'password' => 'password',
+    'dsn' => env('DB_DRIVER') . ':host=' . env('DB_HOST') .';dbname=' . env('DB_NAME'),
+    'username' => env('DB_USERNAME'),
+    'password' => env('DB_PASSWORD'),
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)

@@ -1,5 +1,9 @@
 1) yii migrate;
-2) yii seed;
+2) yii migrate --migrationPath=@yii/rbac/migrations; 
+3) yii my-rbac;
+4) yii seed (for parent tree);
+5) site/tree to parent tree view;
+6) menu/tree to nested sets tree view;
 
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
