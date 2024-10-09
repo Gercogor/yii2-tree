@@ -1,6 +1,7 @@
 <?php
 
 /** @var yii\web\View $this */
+
 /** @var string $content */
 
 use app\assets\AppAsset;
@@ -38,7 +39,27 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
-        'items' => []
+        'items' => [
+            ['label' => 'Home', 'url' => ['/site/index']],
+
+            ['label' => 'About', 'url' => ['/site/about']],
+
+            ['label' => 'Contact', 'url' => ['/site/contact']],
+
+            ['label' => 'Tree', 'url' => ['/site/tree']],
+
+            ['label' => 'Tree Nested', 'url' => ['/menu/tree']],
+
+            Yii::$app->user->isGuest ? (
+
+            ['label' => 'Login', 'url' => ['/site/login']]
+
+            ) : (
+
+                '<li class="nav-item">' . Html::a('Logout', ['/site/logout',], ['data-method' => 'post', 'class' => 'nav-link']) . '</li>'
+
+            )
+        ]
     ]);
     NavBar::end();
     ?>
@@ -64,6 +85,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </footer>
 
 <?php $this->endBody() ?>
+<script src="/js/js.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

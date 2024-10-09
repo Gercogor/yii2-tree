@@ -41,6 +41,10 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['ADMIN'],
+        ],
         'db' => $db,
 
         'urlManager' => [

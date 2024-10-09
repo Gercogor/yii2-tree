@@ -22,6 +22,11 @@ if (!$dynoRoute) {
 <div class="site-tree">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    To create tree run
+    <pre>
+        php yii seed;
+    </pre>
+
     <?php
         function print_list($array, $parent = 0, $url='')
         {

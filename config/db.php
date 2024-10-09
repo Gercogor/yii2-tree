@@ -1,9 +1,9 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=127.0.0.1;dbname=laraveltest',
-    'username' => 'root',
-    'password' => 'root',
+    'dsn' => env('DB_DRIVER') . ':host=' . env('DB_HOST') .';dbname=' . env('DB_NAME'),
+    'username' => env('DB_USERNAME'),
+    'password' => env('DB_PASSWORD'),
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
